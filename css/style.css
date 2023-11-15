@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 20px auto;
+  font-weight: 300;
+  background-color: #5a228b;
+}
+
+form {
+  padding: 15px 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.login-form {
+  padding: 10px;
+  background: #fff;
+  height: 300px;
+  width: 50%;
+  overflow: auto;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.logo {
+  color: #5a228b;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  margin: 10px 0;
+}
+
+.login-form p {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.login-form input {
+  margin-top: 25px;
+  height: 40px;
+  border: 2px solid #5a228b;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+}
+
+.login-form input[type="text"] {
+  width: 75%;
+}
+
+.login-form input[type="submit"] {
+  background-color: #5a228b;
+  color: #ffffff;
+}
+
+.login-form input[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #5a228b;
+  cursor: pointer;
+}
+
+.menu {
+  text-align: left;
+  margin: 50px auto;
+  margin-bottom: 25px;
+  padding: 10px;
+  background: #fff;
+  min-height: 75px;
+  width: 50%;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+#welcome {
+  float: left;
+  margin: 25px 0;
+}
+
+#logout {
+  float: right;
+  margin: 25px 0;
+}
+
+.chatbox {
+  text-align: left;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  padding: 10px;
+  background: #fff;
+  height: 300px;
+  width: 50%;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.chat-time,
+.username {
+  margin-right: 10px;
+}
+
+.username,
+.username-left {
+  font-weight: bold;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+  min-height: 50px;
+  width: 50%;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.form input {
+  height: 40px;
+  width: 100%;
+  border: 2px solid #5a228b;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+}
+
+.form input[type="submit"] {
+  background-color: #5a228b;
+  color: #ffffff;
+  width: 75px;
+}
+
+.form input[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #5a228b;
+  cursor: pointer;
+}
+
+@media(max-width: 1200px) {
+  .login-form,
+  .menu,
+  .chatbox,
+  .form {
+    width: 75%;
+  }
+}
+
+@media(max-width: 800px) {
+  .login-form,
+  .menu,
+  .chatbox,
+  .form {
+    width: 90%;
+  }
+}
