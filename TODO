@@ -1,0 +1,33 @@
+Easy Additions
+
+User profiles - Show all chirps from a specific user
+
+Search - Find chirps by keyword
+
+Pagination - Handle thousands of chirps efficiently
+
+User avatars - Upload and display profile pictures
+
+Like/favorite - Let users heart their favorite chirps
+
+Intermediate Challenges
+
+Follow system - Follow other users and see their chirps
+
+Notifications - Alert users when someone interacts with their chirps
+
+API endpoints - Build a mobile app that uses your Chirper backend
+
+Tags/hashtags - Categorize and filter chirps
+
+Rich text - Support markdown or formatted chirps
+
+Advanced Features
+
+Real-time updates with Laravel Reverb or Pusher
+
+Infinite scroll with Livewire or Inertia.js
+
+AI moderation using Laravel's queue system (maybe you use AI with Laravel's queue system and put it through this system of "is this able to be chirped?" Maybe you want to get into that level of moderation!)
+
+Multi-language support with Laravel's localization
