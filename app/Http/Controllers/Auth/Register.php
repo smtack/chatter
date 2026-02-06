@@ -17,18 +17,20 @@ class Register extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'username' => 'required|string|max:16|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
             'name' => $validated['name'],
+            'username' => $validated['username'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
 
         Auth::login($user);
 
-        return redirect('/')->with('success', 'Welcome to Chirper!');
+        return redirect('/home')->with('success', 'Welcome to Chirper!');
     }
 }

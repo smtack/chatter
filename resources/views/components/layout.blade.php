@@ -47,7 +47,11 @@
         
         <div class="navbar-end gap-2">
             @auth
-                <span class="text-sm">{{ auth()->user()->name }}</span>
+                <span class="text-sm">
+                    <a href="{{ route('profile', auth()->user()->username) }}">
+                        {{ auth()->user()->name }}
+                    </a>
+                </span>
                 <form method="POST" action="/logout" class="inline">
                     @csrf
                     <button type="submit" class="btn btn-ghost btn-sm">Logout</button>
@@ -76,7 +80,7 @@
     </main>
 
     <footer class="w-full mt-24">
-        <div class="mx-auto w-full max-w-[1400px] px-4 xl:px-16">
+        <div class="mx-auto w-full max-w-350 px-4 xl:px-16">
             <svg class="block w-full h-auto text-base-content opacity-8" viewBox="0 0 1280 308" aria-hidden="true"
                 focusable="false">
                 <path d="M50.2753 0H0V308.689H144.713V263.27H50.2753V0Z" fill="currentColor" />

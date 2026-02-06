@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chirp;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChirpController extends Controller
 {
@@ -43,9 +44,9 @@ class ChirpController extends Controller
             'message.max' => 'Chirps must be 255 characters or less.',
         ]);
 
-        auth()->user()->chirps()->create($validated);
+        Auth::user()->chirps()->create($validated);
 
-        return redirect('/')->with('success', 'Your Chirp has been posted!');
+        return redirect('/home')->with('success', 'Your Chirp has been posted!');
     }
 
     /**
@@ -82,7 +83,7 @@ class ChirpController extends Controller
 
         $chirp->update($validated);
 
-        return redirect('/')->with('success', 'Your Chirp has been updated!');
+        return redirect('/home')->with('success', 'Your Chirp has been updated!');
     }
 
     /**
@@ -94,6 +95,6 @@ class ChirpController extends Controller
 
         $chirp->delete();
 
-        return redirect('/')->with('success', 'Your Chirp has been deleted!');
+        return redirect('/home')->with('success', 'Your Chirp has been deleted!');
     }
 }

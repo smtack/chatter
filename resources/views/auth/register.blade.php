@@ -28,6 +28,22 @@
                             </div>
                         @enderror
 
+                        <!-- Username -->
+                        <label class="floating-label mb-6">
+                            <input type="text"
+                                   name="username"
+                                   placeholder="johndoe"
+                                   value="{{ old('username') }}"
+                                   class="input input-bordered @error('username') input-error @enderror"
+                                   required>
+                            <span>Username</span>
+                        </label>
+                        @error('username')
+                            <div class="label -mt-4 mb-2">
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            </div>
+                        @enderror
+
                         <!-- Email -->
                         <label class="floating-label mb-6">
                             <input type="email"
