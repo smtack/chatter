@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')
@@ -17,6 +18,8 @@ Route::middleware('auth')->group(function() {
     Route::put('/chirps/{chirp}', [ChirpController::class, 'update']);
     Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy']);
 });
+
+Route::get('/search', SearchController::class);
 
 // User Profile
 Route::get('/profile/{user:username}', ProfileController::class)

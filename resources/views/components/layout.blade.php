@@ -44,6 +44,16 @@
                 </defs>
             </svg></a>
         </div>
+
+        <!-- Search Bar -->
+        <div class="navbar-center">
+            <form method="GET" action="/search">
+                <input type="text"
+                        name="s"
+                        placeholder="Search..."
+                        class="input w-50 input-bordered">
+            </form>
+        </div>
         
         <div class="navbar-end gap-2">
             @auth
