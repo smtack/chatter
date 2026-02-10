@@ -20,5 +20,9 @@
                 </div>
             @endforelse
         </div>
+
+        <div class="mt-4">
+            {{ $chirps->links() }}
+        </div>
     </div>
 </x-layout>

@@ -8,6 +8,9 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
     <meta property="og:image" content={{ asset('images/og.jpeg') }} />
     <meta property="og:title" content="Chirper" />
     <meta property="og:description" content="A demo social media platform highlighting the power and simplicity of Laravel." />

@@ -15,8 +15,8 @@ class SearchController extends Controller
         $chirps = Chirp::with('user')
             ->where('message', 'like', '%' . $request->query('s') . '%')
             ->latest()
-            ->take(50)
-            ->get();
+            ->paginate(15)
+            ->withQueryString();
 
         return view('search', compact('chirps'));
     }

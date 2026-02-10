@@ -18,8 +18,7 @@ class ChirpController extends Controller
     {
         $chirps = Chirp::with('user')
             ->latest()
-            ->take(50)
-            ->get();
+            ->paginate(15);
 
         return view('home', ['chirps' => $chirps]);
     }

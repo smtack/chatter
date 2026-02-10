@@ -15,8 +15,7 @@ class ProfileController extends Controller
         $chirps = Chirp::with('user')
             ->where('user_id', '=', $user->id)
             ->latest()
-            ->take(50)
-            ->get();
+            ->paginate(15);
 
         return view('profile', compact('user', 'chirps'));
     }
