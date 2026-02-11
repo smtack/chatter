@@ -65,6 +65,11 @@
                         {{ auth()->user()->name }}
                     </a>
                 </span>
+                <span class="text-sm">
+                    <a href="{{ route('auth.update') }}">
+                        Settings
+                    </a>
+                </span>
                 <form method="POST" action="/logout" class="inline">
                     @csrf
                     <button type="submit" class="btn btn-ghost btn-sm">Logout</button>

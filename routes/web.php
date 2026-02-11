@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
+use App\Http\Controllers\Auth\Settings;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
@@ -20,10 +21,6 @@ Route::middleware('auth')->group(function() {
 });
 
 Route::get('/search', SearchController::class);
-
-// User Profile
-Route::get('/profile/{user:username}', ProfileController::class)
-    ->name('profile');
 
 // Register Routes
 Route::view('/register', 'auth.register')
@@ -45,3 +42,28 @@ Route::post('/login', Login::class)
 Route::post('/logout', Logout::class)
     ->middleware('auth')
     ->name('logout');
+
+// Update Profile
+Route::get('/settings', [Settings::class, 'index'])
+    ->middleware('auth')
+    ->name('auth.update');
+
+Route::post('/update-profile', [Settings::class, 'updateProfile'])
+    ->middleware('auth')
+    ->name('auth.update-profile');
+
+Route::post('/update-avatar', [Settings::class, 'updateAvatar'])
+    ->middleware('auth')
+    ->name('auth.update-avatar');
+
+Route::post('/update-password', [Settings::class, 'updatePassword'])
+    ->middleware('auth')
+    ->name('auth.update-password');
+
+Route::post('/delete-profile', [Settings::class, 'deleteProfile'])
+    ->middleware('auth')
+    ->name('auth.delete-profile');
+
+// User Profile
+Route::get('/profile/{user:username}', ProfileController::class)
+    ->name('profile');
