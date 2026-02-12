@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Settings;
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/chirps/{chirp}/edit', [ChirpController::class, 'edit']);
     Route::put('/chirps/{chirp}', [ChirpController::class, 'update']);
     Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy']);
+
+    Route::post('/chirps/{chirp}/like', LikeController::class)
+        ->name('chirp.like');
 });
 
 Route::get('/search', SearchController::class);

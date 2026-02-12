@@ -49,6 +49,22 @@
                     @endcan
                 </div>
                 <p class="mt-1">{{ $chirp->message }}</p>
+
+                <div class="mt-2">
+                    <form action="{{ route('chirp.like', $chirp) }}" method="POST">
+                        @csrf
+
+                        <button type="submit" class="flex items-center space-x-2 cursor-pointer">
+                            @if ($chirp->liked_by_user)
+                                <img class="w-4" src="{{ asset('icons/like-full.svg') }}" alt="Like Chirp" />
+                            @else
+                                <img class="w-4" src="{{ asset('icons/like.svg') }}" alt="Like Chirp" />
+                            @endif
+
+                            <span>{{ $chirp->likes_count }}</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
