@@ -59,4 +59,52 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Chirp::class, 'chirp_like')->withTimestamps();
     }
+
+    public function friendsOfMine(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    public function friendOf(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'friend_id', 'user_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    public function friends()
+    {
+        $friendsOfMine = $this->friendsOfMine()->wherePivot('accepted', true)->get();
+        $friendOf = $this->friendOf()->wherePivot('accepted', true)->get();
+
+        return $friendsOfMine->merge($friendOf);
+    }
+
+    public function sentFriendRequests()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', false);
+    }
+
+    public function receivedFriendRequests()
+    {
+        return $this->friendOf()->wherePivot('accepted', false);
+    }
+
+    public function hasSentFriendRequest(User $user): bool
+    {
+        return $this->sentFriendRequests()->where('friend_id', $user->id)->exists();
+    }
+
+    public function hasReceivedFriendRequest(User $user): bool
+    {
+        return $this->receivedFriendRequests()->where('user_id', $user->id)->exists();
+    }
+
+    public function isFriendsWith(User $user): bool
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', true)->where('friend_id', $user->id)->exists()
+            || $this->friendOf()->wherePivot('accepted', true)->where('user_id', $user->id)->exists();
+    }
 }

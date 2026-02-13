@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Settings;
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
@@ -71,3 +72,20 @@ Route::post('/delete-profile', [Settings::class, 'deleteProfile'])
 // User Profile
 Route::get('/profile/{user:username}', ProfileController::class)
     ->name('profile');
+
+// Friends
+Route::get('/friends', [FriendshipController::class, 'index'])
+    ->middleware('auth')
+    ->name('friends');
+
+Route::post('/friends/{user}/add', [FriendshipController::class, 'addFriend'])
+    ->middleware('auth')
+    ->name('friends.add');
+
+Route::patch('/friends/{user}/accept', [FriendshipController::class, 'acceptFriendRequest'])
+    ->middleware('auth')
+    ->name('friends.accept');
+
+Route::delete('/friends/{user}/remove', [FriendshipController::class, 'removeFriend'])
+    ->middleware('auth')
+    ->name('friends.remove');

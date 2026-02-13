@@ -66,6 +66,11 @@
                     </a>
                 </span>
                 <span class="text-sm">
+                    <a href="{{ route('friends') }}">
+                        Friends
+                    </a>
+                </span>
+                <span class="text-sm">
                     <a href="{{ route('auth.update') }}">
                         Settings
                     </a>

@@ -23,6 +23,32 @@
                 </h3>
                 <h4 class="text-sm text-base-content/60">Joined {{ $user->created_at->diffForHumans() }}</h4>
             </div>
+
+            <div>
+                @if (auth()->user()->isFriendsWith($user))
+                    <form action="{{ route('friends.remove', $user) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="btn btn-ghost btn-xs">Remove Friend</button>
+                    </form>
+                @elseif (auth()->user()->hasSentFriendRequest($user))
+                    <button class="btn btn-ghost btn-xs">Friend Request Sent</button>
+                @elseif (auth()->user()->hasReceivedFriendRequest($user))
+                    <form action="{{ route('friends.accept', $user) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+
+                        <button class="btn btn-ghost btn-xs">Accept Friend Request</button>
+                    </form>
+                @elseif (auth()->id() !== $user->id)
+                    <form action="{{ route('friends.add', $user) }}" method="POST">
+                        @csrf
+
+                        <button class="btn btn-primary btn-xs sla">Add Friend</button>
+                    </form>
+                @endif
+            </div>
         </div>
     </div>
 </div>
