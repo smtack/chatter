@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Chirp;
+use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ChirpController extends Controller
+class PostController extends Controller
 {
     use AuthorizesRequests;
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -20,7 +20,7 @@ class ChirpController extends Controller
             ->merge(Auth::user()->friendOf()->wherePivot('accepted', true)->pluck('user_id'))
             ->push(Auth::id());
 
-        $chirps = Chirp::with('user')
+        $posts = Post::with('user')
             ->whereIn('user_id', $feedIds)
             ->withCount('likes')
             ->withExists(['likes as liked_by_user' => function($query) {
@@ -29,7 +29,7 @@ class ChirpController extends Controller
             ->latest()
             ->paginate(15);
 
-        return view('chirps.index', ['chirps' => $chirps]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -48,19 +48,19 @@ class ChirpController extends Controller
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ], [
-            'message.required' => 'Please write something to chirp!',
-            'message.max' => 'Chirps must be 255 characters or less.',
+            'message.required' => 'Please write something to post!',
+            'message.max' => 'Posts must be 255 characters or less.',
         ]);
 
-        Auth::user()->chirps()->create($validated);
+        Auth::user()->posts()->create($validated);
 
-        return redirect('/home')->with('success', 'Your Chirp has been posted!');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
         //
     }
@@ -68,41 +68,41 @@ class ChirpController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Chirp $chirp)
+    public function edit(Post $post)
     {
-        $this->authorize('update', $chirp);
+        $this->authorize('update', $post);
 
-        return view('chirps.edit', compact('chirp'));
+        return view('posts.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chirp $chirp)
+    public function update(Request $request, Post $post)
     {
-        $this->authorize('update', $chirp);
+        $this->authorize('update', $post);
 
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ], [
-            'message.required' => 'Please write something to chirp!',
-            'message.max' => 'Chirps must be 255 characters or less.',
+            'message.required' => 'Please write something to post!',
+            'message.max' => 'Posts must be 255 characters or less.',
         ]);
 
-        $chirp->update($validated);
+        $post->update($validated);
 
-        return redirect('/home')->with('success', 'Your Chirp has been updated!');
+        return redirect('/home')->with('success', 'Your Post has been updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Chirp $chirp)
+    public function destroy(Post $post)
     {
-        $this->authorize('delete', $chirp);
+        $this->authorize('delete', $post);
 
-        $chirp->delete();
+        $post->delete();
 
-        return redirect('/home')->with('success', 'Your Chirp has been deleted!');
+        return redirect('/home')->with('success', 'Your Post has been deleted!');
     }
 }

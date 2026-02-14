@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Chirp extends Model
+class Post extends Model
 {
     protected $fillable = [
         'message',
@@ -19,6 +19,6 @@ class Chirp extends Model
 
     public function likes(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'chirp_like')->withTimestamps();
+        return $this->belongsToMany(User::class, 'post_like')->withTimestamps();
     }
 }

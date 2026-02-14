@@ -50,14 +50,14 @@ class User extends Authenticatable
         ];
     }
 
-    public function chirps(): HasMany
+    public function posts(): HasMany
     {
-        return $this->hasMany(Chirp::class);
+        return $this->hasMany(Post::class);
     }
 
     public function likes(): BelongsToMany
     {
-        return $this->belongsToMany(Chirp::class, 'chirp_like')->withTimestamps();
+        return $this->belongsToMany(Post::class, 'post_like')->withTimestamps();
     }
 
     public function friendsOfMine(): BelongsToMany

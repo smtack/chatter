@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Chirp;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +15,7 @@ class SearchController extends Controller
     {
         $keyword = $request->query('s');
 
-        $chirps = Chirp::with('user')
+        $posts = Post::with('user')
             ->withCount('likes')
             ->withExists(['likes as liked_by_user' => function($query) {
                 $query->where('user_id', Auth::id());
@@ -25,6 +25,6 @@ class SearchController extends Controller
             ->paginate(15)
             ->withQueryString();
 
-        return view('search', compact('chirps'));
+        return view('search', compact('posts'));
     }
 }

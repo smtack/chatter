@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Settings;
-use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
@@ -15,14 +15,14 @@ Route::view('/', 'welcome')
     ->middleware('guest');
 
 Route::middleware('auth')->group(function() {
-    Route::get('/home', [ChirpController::class, 'index']);
-    Route::post('/chirps', [ChirpController::class, 'store']);
-    Route::get('/chirps/{chirp}/edit', [ChirpController::class, 'edit']);
-    Route::put('/chirps/{chirp}', [ChirpController::class, 'update']);
-    Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy']);
+    Route::get('/home', [PostController::class, 'index']);
+    Route::post('/posts', [PostController::class, 'store']);
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+    Route::put('/posts/{post}', [PostController::class, 'update']);
+    Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 
-    Route::post('/chirps/{chirp}/like', LikeController::class)
-        ->name('chirp.like');
+    Route::post('/posts/{post}/like', LikeController::class)
+        ->name('post.like');
 });
 
 Route::get('/search', SearchController::class);

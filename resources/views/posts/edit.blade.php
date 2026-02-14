@@ -1,14 +1,14 @@
 <x-layout>
     <x-slot:title>
-        Edit Chirp
+        Edit Post
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">
-        <h1 class="text-3xl font-bold mt-8">Edit Chirp</h1>
+        <h1 class="text-3xl font-bold mt-8">Edit Post</h1>
 
         <div class="card bg-base-100 mt-8">
             <div class="card-body">
-                <form method="POST" action="/chirps/{{ $chirp->id }}">
+                <form method="POST" action="/posts/{{ $post->id }}">
                     @csrf
                     @method('PUT')
 
@@ -19,7 +19,7 @@
                             rows="4"
                             maxlength="255"
                             required
-                        >{{ old('message', $chirp->message) }}</textarea>
+                        >{{ old('message', $post->message) }}</textarea>
 
                         @error('message')
                             <div class="label">
@@ -33,7 +33,7 @@
                             Cancel
                         </a>
                         <button type="submit" class="btn btn-primary btn-sm">
-                            Update Chirp
+                            Update Post
                         </button>
                     </div>
                 </form>

@@ -1,34 +1,31 @@
-<p align="center">
-  <img src="public/images/chirper_logo.svg" alt="Chirper Logo" width="400">
-</p>
-
-# Chirper
-
-This is a demo application for the Laravel Learn Bootcamp mini course that can be found at [https://laravel.com/learn](https://laravel.com/learn).
-
-## Video Tutorial
+# Chatter
 
 <p align="center">
-  <a href="https://youtu.be/MOLZOXqaomM">
-    <img src="https://img.youtube.com/vi/MOLZOXqaomM/maxresdefault.jpg" alt="Laravel Bootcamp Video Tutorial" width="600">
-  </a>
+  <img src="public/images/screenshot.png" alt="Chatter Screenshot" width="400">
 </p>
-
-Watch the walkthrough video: [https://youtu.be/MOLZOXqaomM](https://youtu.be/MOLZOXqaomM)
 
 ## About
 
-Chirper is a simple social media platform built with Laravel that demonstrates the framework's core features and best practices. The application showcases modern Laravel development techniques including:
+Chatter is a social microblogging application based on Laravel Bootcamp's Chirper demo application. The application showcases modern Laravel development techniques including:
 
 - Authentication and authorization
 - Database migrations and Eloquent ORM
 - Form validation and request handling
 - Blade templating engine
 - Tailwind CSS for styling
+- Likes
+- Friendship system
 
-## Getting Started
+## Installation
 
-To run this application locally, follow the instructions in the [Laravel documentation](https://laravel.com/docs) to get your development server up and running or watch the video tutorial linked above.
+1. Run `git clone https://github.com/smtack/chatter.git` and `cd chatter`
+2. Run `composer install` then `npm install` to install dependencies
+3. Run `cp .env.example .env` and customise for your database
+4. Run `php artisan key:generate`
+5. Run `php artisan migrate`
+6. Run `composer run dev` to start the development server
+
+To enable the default avatar, copy `default.png` from `public/images/` to `storage/app/public/avatars`, then run `php artisan storage:link`
 
 ## License
 
