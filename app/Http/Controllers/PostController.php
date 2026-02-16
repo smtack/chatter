@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Reply;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +63,18 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $post->load('user')
+            ->loadCount('likes')
+            ->loadExists(['likes as liked_by_user' => function($query) {
+                $query->where('user_id', Auth::id());
+            }]);
+        
+        $replies = $post->replies()
+            ->with('user')
+            ->latest()
+            ->paginate(15);
+
+        return view('posts.show', compact('post', 'replies'));
     }
 
     /**

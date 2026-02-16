@@ -49,7 +49,7 @@
                 </div>
                 <p class="mt-1">{{ $post->message }}</p>
 
-                <div class="mt-2">
+                <div class="mt-2 flex items-center space-x-4">
                     <form action="{{ route('post.like', $post) }}" method="POST">
                         @csrf
 
@@ -63,6 +63,11 @@
                             <span>{{ $post->likes_count }}</span>
                         </button>
                     </form>
+
+                    <a href="/posts/{{ $post->id }}" class="flex space-x-2">
+                        <img class="w-4" src="{{ asset('icons/reply.svg') }}" alt="Replies" />
+                        <span class="text-black">{{ $post->replies_count }}</span>
+                    </a>
                 </div>
             </div>
         </div>

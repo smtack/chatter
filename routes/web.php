@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,22 @@ Route::view('/', 'welcome')
 Route::middleware('auth')->group(function() {
     Route::get('/home', [PostController::class, 'index']);
     Route::post('/posts', [PostController::class, 'store']);
+    Route::get('/posts/{post}', [PostController::class, 'show']);
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
-
-    Route::post('/posts/{post}/like', LikeController::class)
-        ->name('post.like');
 });
+
+Route::middleware('auth')->group(function() {
+    Route::post('/replies/{post}', [ReplyController::class, 'store']);
+    Route::get('/replies/{reply}/edit', [ReplyController::class, 'edit']);
+    Route::put('/replies/{reply}', [ReplyController::class, 'update']);
+    Route::delete('/replies/{reply}', [ReplyController::class, 'destroy']);
+});
+
+Route::post('/posts/{post}/like', LikeController::class)
+        ->middleware('auth')
+        ->name('post.like');
 
 Route::get('/search', SearchController::class);
 
