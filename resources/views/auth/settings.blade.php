@@ -105,6 +105,41 @@
             </div>
         </div>
     </div>
+     <div class="hero">
+        <div class="hero-content flex-col">
+            <div class="card w-96 bg-base-100">
+                <div class="card-body">
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Update Bio</h1>
+
+                    <form method="POST" action="{{ route('auth.update-bio') }}">
+                        @csrf
+
+                        <!-- Bio -->
+                        <label class="floating-label mb-6">
+                            <textarea
+                                name="bio"
+                                placeholder="Tell people about yourself..."
+                                class="input input-bordered h-40 resize-none text-wrap @error('bio') input-error @enderror"
+                                required>{{ auth()->user()->bio }}</textarea>
+                            <span>Bio</span>
+                        </label>
+                        @error('bio')
+                            <div class="label -mt-4 mb-2">
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            </div>
+                        @enderror
+
+                        <!-- Submit Button -->
+                        <div class="form-control mt-8">
+                            <button type="submit" class="btn btn-primary btn-sm w-full">
+                                Update Bio
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="hero">
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">

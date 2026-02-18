@@ -58,6 +58,19 @@ class Settings extends Controller
         return redirect('/settings')->with('success', 'Avatar Updated!');
     }
 
+    public function updateBio(Request $request)
+    {
+        $validated = $request->validate([
+            'bio' => 'string|min:3|max:255',
+        ]);
+
+        Auth::user()->update($validated);
+
+        $request->session()->regenerate();
+
+        return redirect('/settings')->with('success', 'Bio Updated!');
+    }
+
     public function updatePassword(Request $request)
     {
         $validated = $request->validate([

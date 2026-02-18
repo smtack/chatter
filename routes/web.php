@@ -71,6 +71,10 @@ Route::post('/update-avatar', [Settings::class, 'updateAvatar'])
     ->middleware('auth')
     ->name('auth.update-avatar');
 
+Route::post('/update-bio', [Settings::class, 'updateBio'])
+    ->middleware('auth')
+    ->name('auth.update-bio');
+
 Route::post('/update-password', [Settings::class, 'updatePassword'])
     ->middleware('auth')
     ->name('auth.update-password');
