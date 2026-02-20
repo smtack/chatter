@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        {{ $user->name }}'s Profile
+        {{ $user->name }} {{ __('general.users_profile') }}
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">
@@ -14,7 +14,7 @@
                     <div class="hero-content text-center">
                         <div>
                             <x-icons.speech-icon />
-                            <p class="mt-4 text-base-content/60">No posts yet.</p>
+                            <p class="mt-4 text-base-content/60">{{ __('general.no_posts') }}</p>
                         </div>
                     </div>
                 </div>

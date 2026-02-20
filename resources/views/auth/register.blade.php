@@ -1,13 +1,13 @@
 <x-layout>
     <x-slot:title>
-        Register
+        {{ __('general.register') }}
     </x-slot:title>
 
     <div class="hero min-h-[calc(100vh-16rem)]">
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">
                 <div class="card-body">
-                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Create Account</h1>
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">{{ __('general.create_account') }}</h1>
 
                     <form method="POST" action="/register">
                         @csrf
@@ -20,7 +20,7 @@
                                    value="{{ old('name') }}"
                                    class="input input-bordered @error('name') input-error @enderror"
                                    required>
-                            <span>Name</span>
+                            <span>{{ __('general.name') }}</span>
                         </label>
                         @error('name')
                             <div class="label -mt-4 mb-2">
@@ -36,7 +36,7 @@
                                    value="{{ old('username') }}"
                                    class="input input-bordered @error('username') input-error @enderror"
                                    required>
-                            <span>Username</span>
+                            <span>{{ __('general.username') }}</span>
                         </label>
                         @error('username')
                             <div class="label -mt-4 mb-2">
@@ -52,7 +52,7 @@
                                    value="{{ old('email') }}"
                                    class="input input-bordered @error('email') input-error @enderror"
                                    required>
-                            <span>Email</span>
+                            <span>{{ __('general.email') }}</span>
                         </label>
                         @error('email')
                             <div class="label -mt-4 mb-2">
@@ -67,7 +67,7 @@
                                    placeholder="••••••••"
                                    class="input input-bordered @error('password') input-error @enderror"
                                    required>
-                            <span>Password</span>
+                            <span>{{ __('general.password') }}</span>
                         </label>
                         @error('password')
                             <div class="label -mt-4 mb-2">
@@ -82,21 +82,21 @@
                                    placeholder="••••••••"
                                    class="input input-bordered"
                                    required>
-                            <span>Confirm Password</span>
+                            <span>{{ __('general.confirm_password') }}</span>
                         </label>
 
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
                             <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Register
+                                {{ __('general.register') }}
                             </button>
                         </div>
                     </form>
 
-                    <div class="divider">OR</div>
+                    <div class="divider">{{ __('general.or') }}</div>
                     <p class="text-center text-sm">
-                        Already have an account?
-                        <a href="/login" class="link link-primary">Sign in</a>
+                        {{ __('general.hasaccount') }}
+                        <a href="/login" class="link link-primary">{{ __('general.signin') }}</a>
                     </p>
                 </div>
             </div>

@@ -6,38 +6,41 @@ use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Settings;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FriendshipController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')
-    ->middleware('guest');
+Route::view('/', 'welcome')->middleware('guest');
+
+Route::get('lang/{lang}', LanguageController::class)->name('lang');
+
+Route::get('/search', SearchController::class);
+
+Route::get('/profile/{user:username}', ProfileController::class)->name('profile');
 
 Route::middleware('auth')->group(function() {
+    // Post Routes
     Route::get('/home', [PostController::class, 'index']);
     Route::post('/posts', [PostController::class, 'store']);
     Route::get('/posts/{post}', [PostController::class, 'show']);
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
-});
 
-Route::middleware('auth')->group(function() {
+    // Like a post
+    Route::post('/posts/{post}/like', LikeController::class)->name('post.like');
+
+    // Reply Routes
     Route::post('/replies/{post}', [ReplyController::class, 'store']);
     Route::get('/replies/{reply}/edit', [ReplyController::class, 'edit']);
     Route::put('/replies/{reply}', [ReplyController::class, 'update']);
     Route::delete('/replies/{reply}', [ReplyController::class, 'destroy']);
 });
 
-Route::post('/posts/{post}/like', LikeController::class)
-        ->middleware('auth')
-        ->name('post.like');
-
-Route::get('/search', SearchController::class);
-
-// Register Routes
+// Register
 Route::view('/register', 'auth.register')
     ->middleware('guest')
     ->name('register');
@@ -58,7 +61,7 @@ Route::post('/logout', Logout::class)
     ->middleware('auth')
     ->name('logout');
 
-// Update Profile
+// Profile settings
 Route::get('/settings', [Settings::class, 'index'])
     ->middleware('auth')
     ->name('auth.update');
@@ -82,10 +85,6 @@ Route::post('/update-password', [Settings::class, 'updatePassword'])
 Route::post('/delete-profile', [Settings::class, 'deleteProfile'])
     ->middleware('auth')
     ->name('auth.delete-profile');
-
-// User Profile
-Route::get('/profile/{user:username}', ProfileController::class)
-    ->name('profile');
 
 // Friends
 Route::get('/friends', [FriendshipController::class, 'index'])

@@ -1,10 +1,10 @@
 <x-layout>
     <x-slot:title>
-        Edit Reply
+        {{ __('general.edit_reply') }}
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">
-        <h1 class="text-3xl font-bold mt-8">Edit Reply</h1>
+        <h1 class="text-3xl font-bold mt-8">{{ __('general.edit_reply') }}</h1>
 
         <div class="card bg-base-100 mt-8">
             <div class="card-body">
@@ -30,10 +30,10 @@
 
                     <div class="card-actions justify-between mt-4">
                         <a href="/posts/{{ $reply->post_id }}" class="btn btn-ghost btn-sm">
-                            Cancel
+                            {{ __('general.cancel') }}
                         </a>
                         <button type="submit" class="btn btn-primary btn-sm">
-                            Update Reply
+                            {{ __('general.update_reply') }}
                         </button>
                     </div>
                 </form>

@@ -1,13 +1,13 @@
 <x-layout>
     <x-slot:title>
-        Sign In
+        {{ __('general.signin') }}
     </x-slot:title>
 
     <div class="hero min-h-[calc(100vh-16rem)]">
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">
                 <div class="card-body">
-                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Welcome Back</h1>
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">{{ __('general.welcomeback') }}</h1>
 
                     <form method="POST" action="/login">
                         @csrf
@@ -21,7 +21,7 @@
                                    class="input input-bordered @error('email') input-error @enderror"
                                    required
                                    autofocus>
-                            <span>Email</span>
+                            <span>{{ __('general.email') }}</span>
                         </label>
                         @error('email')
                             <div class="label -mt-4 mb-2">
@@ -36,7 +36,7 @@
                                    placeholder="••••••••"
                                    class="input input-bordered @error('password') input-error @enderror"
                                    required>
-                            <span>Password</span>
+                            <span>{{ __('general.password') }}</span>
                         </label>
                         @error('password')
                             <div class="label -mt-4 mb-2">
@@ -50,22 +50,22 @@
                                 <input type="checkbox"
                                        name="remember"
                                        class="checkbox">
-                                <span class="label-text ml-2">Remember me</span>
+                                <span class="label-text ml-2">{{ __('general.remember') }}</span>
                             </label>
                         </div>
 
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
                             <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Sign In
+                                {{ __('general.signin') }}
                             </button>
                         </div>
                     </form>
 
-                    <div class="divider">OR</div>
+                    <div class="divider">{{ __('general.or') }}</div>
                     <p class="text-center text-sm">
-                        Don't have an account?
-                        <a href="/register" class="link link-primary">Register</a>
+                        {{ __('general.noaccount') }}
+                        <a href="/register" class="link link-primary">{{ __('general.register') }}</a>
                     </p>
                 </div>
             </div>

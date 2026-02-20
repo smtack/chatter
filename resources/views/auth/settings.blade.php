@@ -1,13 +1,13 @@
 <x-layout>
     <x-slot:title>
-        Update Profile
+        {{ __('general.update_profile') }}
     </x-slot:title>
 
     <div class="hero">
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">
                 <div class="card-body">
-                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Update Profile</h1>
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">{{ __('general.update_profile') }}</h1>
 
                     <form method="POST" action="{{ route('auth.update-profile') }}">
                         @csrf
@@ -20,7 +20,7 @@
                                    value="{{ auth()->user()->name }}"
                                    class="input input-bordered @error('name') input-error @enderror"
                                    required>
-                            <span>Name</span>
+                            <span>{{ __('general.name') }}</span>
                         </label>
                         @error('name')
                             <div class="label -mt-4 mb-2">
@@ -36,7 +36,7 @@
                                    value="{{ auth()->user()->username }}"
                                    class="input input-bordered @error('username') input-error @enderror"
                                    required>
-                            <span>Username</span>
+                            <span>{{ __('general.username') }}</span>
                         </label>
                         @error('username')
                             <div class="label -mt-4 mb-2">
@@ -52,7 +52,7 @@
                                    value="{{ auth()->user()->email }}"
                                    class="input input-bordered @error('email') input-error @enderror"
                                    required>
-                            <span>Email</span>
+                            <span>{{ __('general.email') }}</span>
                         </label>
                         @error('email')
                             <div class="label -mt-4 mb-2">
@@ -63,7 +63,7 @@
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
                             <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Update
+                                {{ __('general.update') }}
                             </button>
                         </div>
                     </form>
@@ -75,7 +75,7 @@
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">
                 <div class="card-body">
-                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Update Avatar</h1>
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">{{ __('general.update_avatar') }}</h1>
 
                     <form enctype="multipart/form-data" method="POST" action="{{ route('auth.update-avatar') }}">
                         @csrf
@@ -86,7 +86,7 @@
                                    name="avatar"
                                    class="input input-bordered @error('avatar') input-error @enderror"
                                    required>
-                            <span>Avatar</span>
+                            <span>{{ __('general.avatar') }}</span>
                         </label>
                         @error('avatar')
                             <div class="label -mt-4 mb-2">
@@ -97,7 +97,7 @@
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
                             <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Upload
+                                {{ __('general.update') }}
                             </button>
                         </div>
                     </form>
@@ -109,7 +109,7 @@
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">
                 <div class="card-body">
-                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Update Bio</h1>
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">{{ __('general.update_bio') }}</h1>
 
                     <form method="POST" action="{{ route('auth.update-bio') }}">
                         @csrf
@@ -121,7 +121,7 @@
                                 placeholder="Tell people about yourself..."
                                 class="input input-bordered h-40 resize-none text-wrap @error('bio') input-error @enderror"
                                 required>{{ auth()->user()->bio }}</textarea>
-                            <span>Bio</span>
+                            <span>{{ __('general.bio') }}</span>
                         </label>
                         @error('bio')
                             <div class="label -mt-4 mb-2">
@@ -132,7 +132,7 @@
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
                             <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Update Bio
+                                {{ __('general.update') }}
                             </button>
                         </div>
                     </form>
@@ -144,7 +144,7 @@
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">
                 <div class="card-body">
-                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Update Password</h1>
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">{{ __('general.update_password') }}</h1>
 
                     <form method="POST" action="{{ route('auth.update-password') }}">
                         @csrf
@@ -156,7 +156,7 @@
                                    placeholder="••••••••"
                                    class="input input-bordered @error('current_password') input-error @enderror"
                                    required>
-                            <span>Current Password</span>
+                            <span>{{ __('general.current_password') }}</span>
                         </label>
                         @error('current_password')
                             <div class="label -mt-4 mb-2">
@@ -171,7 +171,7 @@
                                    placeholder="••••••••"
                                    class="input input-bordered @error('new_password') input-error @enderror"
                                    required>
-                            <span>New Password</span>
+                            <span>{{ __('general.new_password') }}</span>
                         </label>
                         @error('new_password')
                             <div class="label -mt-4 mb-2">
@@ -186,13 +186,13 @@
                                    placeholder="••••••••"
                                    class="input input-bordered"
                                    required>
-                            <span>Confirm Password</span>
+                            <span>{{ __('general.confirm_password') }}</span>
                         </label>
 
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
                             <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Update Password
+                                {{ __('general.update') }}
                             </button>
                         </div>
                     </form>
@@ -204,7 +204,7 @@
         <div class="hero-content flex-col">
             <div class="card w-96 bg-base-100">
                 <div class="card-body">
-                    <h1 class="text-xl mt-1 font-bold text-center mb-6">Delete Profile</h1>
+                    <h1 class="text-xl mt-1 font-bold text-center mb-6">{{ __('general.delete_profile') }}</h1>
 
                     <form method="POST" action="{{ route('auth.delete-profile') }}">
                         @csrf
@@ -216,7 +216,7 @@
                                    placeholder="••••••••"
                                    class="input input-bordered @error('password') input-error @enderror"
                                    required>
-                            <span>Password</span>
+                            <span>{{ __('general.password') }}</span>
                         </label>
                         @error('password')
                             <div class="label -mt-4 mb-2">
@@ -227,7 +227,7 @@
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
                             <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Delete Account
+                                {{ __('general.delete_profile') }}
                             </button>
                         </div>
                     </form>

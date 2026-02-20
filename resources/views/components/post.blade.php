@@ -27,26 +27,27 @@
                         <span class="text-sm text-base-content/60">{{ $post->created_at->diffForHumans() }}</span>
                         @if ($post->updated_at->gt($post->created_at->addSeconds(5)))
                             <span class="text-base-content/60">·</span>
-                            <span class="text-sm text-base-content/60 italic">edited</span>
+                            <span class="text-sm text-base-content/60 italic">{{ __('general.edited') }}</span>
                         @endif
                     </div>
 
                     @can('update', $post)
                         <div class="flex gap-1">
                             <a href="/posts/{{ $post->id }}/edit" class="btn btn-ghost btn-xs">
-                                Edit
+                                {{ __('general.edit') }}
                             </a>
                             <form method="POST" action="/posts/{{ $post->id }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
                                     class="btn btn-ghost btn-xs text-error">
-                                    Delete
+                                    {{ __('general.delete') }}
                                 </button>
                             </form>
                         </div>
                     @endcan
                 </div>
+                
                 <p class="mt-1">{{ $post->message }}</p>
 
                 <div class="mt-2 flex items-center space-x-4">

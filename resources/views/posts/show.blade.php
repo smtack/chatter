@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        Post by {{ $post->user->name }}
+        {{ __('general.post_by') }} {{ $post->user->name }}
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">
@@ -18,7 +18,7 @@
                     <div class="form-control w-full">
                         <textarea
                             name="message"
-                            placeholder="What do you think?"
+                            placeholder="{{ __('general.what_do_you_think') }}"
                             class="textarea textarea-bordered w-full resize-none @error('message') textarea-error @enderror"
                             rows="4"
                             maxlength="255"
@@ -34,7 +34,7 @@
 
                     <div class="mt-4 flex items-center justify-end">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            Reply
+                            {{ __('general.reply') }}
                         </button>
                     </div>
                 </form>
@@ -71,21 +71,21 @@
                                         <span class="text-sm text-base-content/60">{{ $reply->created_at->diffForHumans() }}</span>
                                         @if ($reply->updated_at->gt($reply->created_at->addSeconds(5)))
                                             <span class="text-base-content/60">·</span>
-                                            <span class="text-sm text-base-content/60 italic">edited</span>
+                                            <span class="text-sm text-base-content/60 italic">{{ __('general.edited') }}</span>
                                         @endif
                                     </div>
 
                                     @can('update', $reply)
                                         <div class="flex gap-1">
                                             <a href="/replies/{{ $reply->id }}/edit" class="btn btn-ghost btn-xs">
-                                                Edit
+                                                {{ __('general.edit') }}
                                             </a>
                                             <form method="POST" action="/replies/{{ $reply->id }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="btn btn-ghost btn-xs text-error">
-                                                    Delete
+                                                    {{ __('general.delete') }}
                                                 </button>
                                             </form>
                                         </div>
@@ -101,7 +101,7 @@
                     <div class="hero-content text-center">
                         <div>
                             <x-icons.speech-icon />
-                            <p class="mt-4 text-base-content/60">No replies yet. Be the first to respond!</p>
+                            <p class="mt-4 text-base-content/60">{{ __('general.no_replies') }}</p>
                         </div>
                     </div>
                 </div>

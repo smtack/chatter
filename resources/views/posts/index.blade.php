@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        Home Feed
+        {{ __('general.home_feed') }}
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">
@@ -12,7 +12,7 @@
                     <div class="form-control w-full">
                         <textarea
                             name="message"
-                            placeholder="What's on your mind?"
+                            placeholder="{{ __('general.whats_on_your_mind') }}"
                             class="textarea textarea-bordered w-full resize-none @error('message') textarea-error @enderror"
                             rows="4"
                             maxlength="255"
@@ -28,7 +28,7 @@
 
                     <div class="mt-4 flex items-center justify-end">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            Post
+                            {{ __('general.post') }}
                         </button>
                     </div>
                 </form>
@@ -44,7 +44,7 @@
                     <div class="hero-content text-center">
                         <div>
                             <x-icons.speech-icon />
-                            <p class="mt-4 text-base-content/60">No posts yet. Be the first to post!</p>
+                            <p class="mt-4 text-base-content/60">{{ __('general.no_posts') }}</p>
                         </div>
                     </div>
                 </div>
