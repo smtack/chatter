@@ -36,12 +36,17 @@
                         class="input w-50 input-bordered">
             </form>
         </div>
-        
+
         <div class="navbar-end gap-2">
             @auth
                 <span class="text-sm">
                     <a href="{{ route('profile', auth()->user()->username) }}">
                         {{ auth()->user()->name }}
+                    </a>
+                </span>
+                <span class="text-sm">
+                    <a href="{{ route('explore') }}">
+                        {{ __('general.explore') }}
                     </a>
                 </span>
                 <span class="text-sm">

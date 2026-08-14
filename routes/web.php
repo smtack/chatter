@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Settings;
+use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\LanguageController;
@@ -15,16 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->middleware('guest');
 
+Route::get('/home', HomeController::class)->middleware('auth')->name('home');
+
 Route::get('lang/{lang}', LanguageController::class)->name('lang');
 
 Route::get('/search', SearchController::class);
 
 Route::get('/profile/{user:username}', ProfileController::class)->name('profile');
 
+Route::get('/explore', ExploreController::class)->name('explore');
+
 Route::middleware('auth')->group(function() {
     // Post Routes
-    Route::get('/home', [PostController::class, 'index']);
-    Route::post('/posts', [PostController::class, 'store']);
+    Route::post('/posts/{profile}', [PostController::class, 'store'])->name('posts.store');
     Route::get('/posts/{post}', [PostController::class, 'show']);
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);

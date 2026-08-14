@@ -1,15 +1,9 @@
 <x-layout>
     <x-slot:title>
-        {{ $user->name }}'s {{ __('general.users_profile') }}
+        {{ __('general.explore') }}
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">
-        <x-user :user="$user" />
-
-        @auth
-            <x-post-form :user="$user" />
-        @endauth
-
         <div class="space-y-4 mt-8">
             @forelse ($posts as $post)
                 <x-post :post="$post" />

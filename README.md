@@ -19,13 +19,10 @@ Chatter is a social microblogging application based on Laravel Bootcamp's Chirpe
 ## Installation
 
 1. Run `git clone https://github.com/smtack/chatter.git` and `cd chatter`
-2. Run `composer install` then `npm install` to install dependencies
-3. Run `cp .env.example .env` and customise for your database
-4. Run `php artisan key:generate`
-5. Run `php artisan migrate`
-6. Run `composer run dev` to start the development server
+2. Run `composer run setup`
+3. Run `composer run dev` to start the development server
 
-To enable the default avatar, copy `default.png` from `public/images/` to `storage/app/public/avatars`, then run `php artisan storage:link`
+To enable avatars, copy `default.png` from `public/images/` to `storage/app/public/avatars`, then run `php artisan storage:link`
 
 ## License
 

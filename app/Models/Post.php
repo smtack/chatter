@@ -11,6 +11,7 @@ class Post extends Model
 {
     protected $fillable = [
         'message',
+        'profile_id',
     ];
 
     protected $withCount = [
@@ -20,6 +21,11 @@ class Post extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'profile_id');
     }
 
     public function replies(): HasMany

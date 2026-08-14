@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="card-actions justify-between mt-4">
-                        <a href="/" class="btn btn-ghost btn-sm">
+                        <a href="{{ url()->previous(route('home')) }}" class="btn btn-ghost btn-sm">
                             {{ __('general.cancel') }}
                         </a>
                         <button type="submit" class="btn btn-primary btn-sm">

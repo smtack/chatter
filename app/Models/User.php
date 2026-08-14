@@ -56,6 +56,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function wall(): HasMany
+    {
+        return $this->hasMany(Post::class, 'profile_id');
+    }
+
     public function replies(): HasMany
     {
         return $this->hasMany(Reply::class);

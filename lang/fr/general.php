@@ -52,10 +52,12 @@ return [
     'whats_on_your_mind' => 'Qu\'est-ce qui préoccupe votre esprit?',
     'post' => 'Post',
     'no_posts' => 'Aucun message pour l\'instant. Soyez le premier à en publier un!',
+    'no_users' => 'Aucun utilisateur trouvé',
     'edit_post' => 'Modifier le post',
     'cancel' => 'Annuler',
     'update_post' => 'Modifier le post',
     'edit_reply' => 'Modifier la réponse',
     'update_reply' => 'Réponse mise à jour',
     'users_profile' => '\'s Profil',
+    'explore' => 'Explorer',
 ];

@@ -29,6 +29,15 @@
                             <span class="text-base-content/60">·</span>
                             <span class="text-sm text-base-content/60 italic">{{ __('general.edited') }}</span>
                         @endif
+
+                        @if (!request()->routeIs('profile'))
+                            <span>
+                                on
+                                <a href="{{ route('profile', $post->profile) }}">
+                                    {{ $post->profile->name }}'s profile
+                                </a>
+                            </span>
+                        @endif
                     </div>
 
                     @can('update', $post)
@@ -47,7 +56,7 @@
                         </div>
                     @endcan
                 </div>
-                
+
                 <p class="mt-1">{{ $post->message }}</p>
 
                 <div class="mt-2 flex items-center space-x-4">

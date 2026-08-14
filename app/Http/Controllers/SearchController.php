@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -15,16 +14,12 @@ class SearchController extends Controller
     {
         $keyword = $request->query('s');
 
-        $posts = Post::with('user')
-            ->withCount('likes')
-            ->withExists(['likes as liked_by_user' => function($query) {
-                $query->where('user_id', Auth::id());
-            }])
-            ->where('message', 'like', "%$keyword%")
+        $users = User::where('name', 'like', "%$keyword%")
+            ->orWhere('username', 'like', "%$keyword")
             ->latest()
-            ->paginate(15)
+            ->paginate(10)
             ->withQueryString();
 
-        return view('search', compact('posts'));
+        return view('search', compact('users'));
     }
 }

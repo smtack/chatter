@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Reply;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,20 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $feedIds = Auth::user()->friendsOfMine()->wherePivot('accepted', true)->pluck('friend_id')
-            ->merge(Auth::user()->friendOf()->wherePivot('accepted', true)->pluck('user_id'))
-            ->push(Auth::id());
-
-        $posts = Post::with('user')
-            ->whereIn('user_id', $feedIds)
-            ->withCount('likes')
-            ->withExists(['likes as liked_by_user' => function($query) {
-                $query->where('user_id', Auth::id());
-            }])
-            ->latest()
-            ->paginate(15);
-
-        return view('posts.index', ['posts' => $posts]);
+        //
     }
 
     /**
@@ -44,16 +31,19 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $profile)
     {
         $validated = $request->validate([
-            'message' => 'required|string|max:255',
+            'message' => 'required|string|min:3|max:255',
         ], [
             'message.required' => 'Please write something to post!',
             'message.max' => 'Posts must be 255 characters or less.',
         ]);
 
-        Auth::user()->posts()->create($validated);
+        Auth::user()->posts()->create([
+            'message' => $validated['message'],
+            'profile_id' => $profile->id,
+        ]);
 
         return redirect()->back();
     }
@@ -68,7 +58,7 @@ class PostController extends Controller
             ->loadExists(['likes as liked_by_user' => function($query) {
                 $query->where('user_id', Auth::id());
             }]);
-        
+
         $replies = $post->replies()
             ->with('user')
             ->latest()
@@ -84,6 +74,8 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
 
+        session(['url.intended' => url()->previous()]);
+
         return view('posts.edit', compact('post'));
     }
 
@@ -95,7 +87,7 @@ class PostController extends Controller
         $this->authorize('update', $post);
 
         $validated = $request->validate([
-            'message' => 'required|string|max:255',
+            'message' => 'required|string|min:3|max:255',
         ], [
             'message.required' => 'Please write something to post!',
             'message.max' => 'Posts must be 255 characters or less.',
@@ -103,7 +95,9 @@ class PostController extends Controller
 
         $post->update($validated);
 
-        return redirect('/home')->with('success', 'Your Post has been updated!');
+        return redirect()
+            ->to(session()->pull('url.intended', route('home')))
+            ->with('success', 'Your Post has been updated!');
     }
 
     /**
@@ -115,6 +109,6 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect('/home')->with('success', 'Your Post has been deleted!');
+        return redirect()->back()->with('success', 'Your Post has been deleted!');
     }
 }

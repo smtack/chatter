@@ -52,10 +52,12 @@ return [
     'whats_on_your_mind' => 'What\'s on your mind?',
     'post' => 'Post',
     'no_posts' => 'No posts yet. Be the first to post!',
+    'no_users' => 'No users found',
     'edit_post' => 'Edit Post',
     'cancel' => 'Cancel',
     'update_post' => 'Update Post',
     'edit_reply' => 'Edit Reply',
     'update_reply' => 'Update Reply',
-    'users_profile' => '\'s Profile',
+    'users_profile' => "Profile",
+    'explore' => 'Explore',
 ];

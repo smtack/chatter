@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
@@ -36,7 +35,7 @@ class PostSeeder extends Seeder
                         ]),
                     ])
                     : User::take(3)->get();
-        
+
         // Sample posts
         $posts = [
             'Just discovered Laravel - where has this been all my life? 🚀',
@@ -51,6 +50,7 @@ class PostSeeder extends Seeder
         foreach ($posts as $message) {
             $users->random()->posts()->create([
                 'message' => $message,
+                'profile_id' => fake()->numberBetween(1, 3),
                 'created_at' => now()->subMinutes(rand(5, 1440)),
             ]);
         }
