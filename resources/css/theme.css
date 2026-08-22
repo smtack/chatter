@@ -52,7 +52,7 @@ html[data-theme="laravelCustom"],
 
 /* Navbar = sand + hairline bottom */
 .navbar {
-    background: var(--color-base-100);
+    background: var(--color-primary);
     border-bottom: var(--border) solid var(--border-color-soft);
     backdrop-filter: saturate(140%) blur(6px);
 }

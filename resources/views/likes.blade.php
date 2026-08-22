@@ -1,6 +1,6 @@
 <x-layouts.layout>
     <x-slot:title>
-        {{ __('general.explore') }}
+        {{ __('general.likes') }}
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">

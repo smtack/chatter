@@ -15,7 +15,7 @@
                     <div class="flex items-center gap-1">
                         <span class="text-sm font-semibold">
                             <a href="{{ route('profile', $post->user->username) }}">
-                                {{ $post->user->name }}
+                                {{ $post->user->full_name }}
                             </a>
                         </span>
                         <span>
@@ -34,7 +34,7 @@
                             <span>
                                 on
                                 <a href="{{ route('profile', $post->profile) }}">
-                                    {{ $post->profile->name }}'s profile
+                                    {{ $post->profile->full_name }}'s profile
                                 </a>
                             </span>
                         @endif
@@ -65,9 +65,9 @@
 
                         <button type="submit" class="flex items-center space-x-2 cursor-pointer">
                             @if ($post->liked_by_user)
-                                <img class="w-4" src="{{ asset('icons/like-full.svg') }}" alt="Unlike Post" />
+                                <x-icons.like-full-icon />
                             @else
-                                <img class="w-4" src="{{ asset('icons/like.svg') }}" alt="Like Post" />
+                                <x-icons.like-icon />
                             @endif
 
                             <span>{{ $post->likes_count }}</span>
@@ -75,7 +75,7 @@
                     </form>
 
                     <a href="/posts/{{ $post->id }}" class="flex space-x-2">
-                        <img class="w-4" src="{{ asset('icons/reply.svg') }}" alt="Replies" />
+                        <x-icons.reply-icon />
                         <span class="text-black">{{ $post->replies_count }}</span>
                     </a>
                 </div>

@@ -9,10 +9,9 @@ return [
     'signup' => 'S\'inscrire',
     'madeby' => 'Fabriqué par Sean avec',
     'welcome' => 'Bienvenue',
-    'welcometo' => 'Bienvenue sur Chatter!',
-    'welcomemessage' => 'Chatter est une application de microblogage social. Inscrivez-vous et faites-vous des amis!',
     'welcomeback' => 'Content de te revoir',
     'name' => 'Nom',
+    'surname' => 'Nom de famille',
     'username' => 'Nom d\'utilisateur',
     'email' => 'E-mail',
     'password' => 'Mot de passe',
@@ -60,4 +59,5 @@ return [
     'update_reply' => 'Réponse mise à jour',
     'users_profile' => '\'s Profil',
     'explore' => 'Explorer',
+    'likes' => 'Goûts',
 ];

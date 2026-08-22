@@ -1,12 +1,12 @@
 # Chatter
 
 <p align="center">
-  <img src="public/images/screenshot.png" alt="Chatter Screenshot" width="800">
+    <img src="public/images/screenshot.png" alt="Chatter Screenshot" width="800">
 </p>
 
 ## About
 
-Chatter is a social microblogging application based on Laravel Bootcamp's Chirper demo application. The application showcases modern Laravel development techniques including:
+Chatter is a social networking application originally based on Laravel Bootcamp's Chirper demo application. The application showcases modern Laravel development techniques including:
 
 - Authentication and authorization
 - Database migrations and Eloquent ORM

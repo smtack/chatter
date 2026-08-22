@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class LanguageController extends Controller
+class LocaleController extends Controller
 {
     /**
      * Handle the incoming request.

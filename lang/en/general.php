@@ -9,10 +9,9 @@ return [
     'signup' => 'Sign Up',
     'madeby' => 'Made by Sean with',
     'welcome' => 'Welcome',
-    'welcometo' => 'Welcome to Chatter!',
-    'welcomemessage' => 'Chatter is a social microblogging application. Sign up and make friends!',
     'welcomeback' => 'Welcome Back',
     'name' => 'Name',
+    'surname' => 'Surname',
     'username' => 'Username',
     'email' => 'Email',
     'password' => 'Password',
@@ -60,4 +59,5 @@ return [
     'update_reply' => 'Update Reply',
     'users_profile' => "Profile",
     'explore' => 'Explore',
+    'likes' => 'Likes',
 ];

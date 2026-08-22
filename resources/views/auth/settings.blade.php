@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.layout>
     <x-slot:title>
         {{ __('general.update_profile') }}
     </x-slot:title>
@@ -16,13 +16,29 @@
                         <label class="floating-label mb-6">
                             <input type="text"
                                    name="name"
-                                   placeholder="John Doe"
+                                   placeholder="John"
                                    value="{{ auth()->user()->name }}"
                                    class="input input-bordered @error('name') input-error @enderror"
                                    required>
                             <span>{{ __('general.name') }}</span>
                         </label>
                         @error('name')
+                            <div class="label -mt-4 mb-2">
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            </div>
+                        @enderror
+
+                        <!-- Surname -->
+                        <label class="floating-label mb-6">
+                            <input type="text"
+                                   name="surname"
+                                   placeholder="Doe"
+                                   value="{{ auth()->user()->surname }}"
+                                   class="input input-bordered @error('surname') input-error @enderror"
+                                   required>
+                            <span>{{ __('general.surname') }}</span>
+                        </label>
+                        @error('surname')
                             <div class="label -mt-4 mb-2">
                                 <span class="label-text-alt text-error">{{ $message }}</span>
                             </div>
@@ -208,7 +224,7 @@
 
                     <form method="POST" action="{{ route('auth.delete-profile') }}">
                         @csrf
-                        
+
                         <!-- Password -->
                         <label class="floating-label mb-6">
                             <input type="password"
@@ -235,4 +251,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-layouts.layout>

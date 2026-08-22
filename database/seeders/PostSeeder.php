@@ -16,19 +16,22 @@ class PostSeeder extends Seeder
         $users = User::count() < 3
                     ? collect([
                         User::create([
-                            'name' => 'Alice Developer',
+                            'name' => 'Alice',
+                            'surname' => 'Developer',
                             'username' => 'alicedev',
                             'email' => 'alice@example.com',
                             'password' => bcrypt('password'),
                         ]),
                         User::create([
-                            'name' => 'Bob Builder',
+                            'name' => 'Bob',
+                            'surname' => 'Builder',
                             'username' => 'bobby',
                             'email' => 'bob@example.com',
                             'password' => bcrypt('password'),
                         ]),
                         User::create([
-                            'name' => 'Charlie Coder',
+                            'name' => 'Charlie',
+                            'surname' => 'Coder',
                             'username' => 'charlie',
                             'email' => 'charlie@example.com',
                             'password' => bcrypt('password'),

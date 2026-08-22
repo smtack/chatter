@@ -16,7 +16,8 @@ class Register extends Controller
     public function __invoke(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:32',
+            'surname' => 'required|string|max:32',
             'username' => 'required|string|max:16|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
@@ -24,6 +25,7 @@ class Register extends Controller
 
         $user = User::create([
             'name' => $validated['name'],
+            'surname' => $validated['surname'],
             'username' => $validated['username'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),

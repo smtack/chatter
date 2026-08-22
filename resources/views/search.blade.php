@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.layout>
     <x-slot:title>
         {{ __('general.search') }}
     </x-slot:title>
@@ -23,4 +23,4 @@
             {{ $users->links() }}
         </div>
     </div>
-</x-layout>
+</x-layouts.layout>

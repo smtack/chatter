@@ -11,7 +11,7 @@
             <div class="min-w-0 flex-1">
                 <h2 class="text-lg font-semibold">
                     <a href="{{ route('profile', $user->username) }}">
-                        {{ $user->name }}
+                        {{ $user->full_name }}
                     </a>
                 </h2>
                 <h3>

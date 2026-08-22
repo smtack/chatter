@@ -19,7 +19,8 @@ class Settings extends Controller
     public function updateProfile(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:32',
+            'surname' => 'required|string|max:32',
             'username' => [
                 'required', 'string', 'max:16',
                 Rule::unique('users')->ignore(Auth::id())

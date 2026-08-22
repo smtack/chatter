@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.guest-layout>
     <x-slot:title>
         {{ __('general.signin') }}
     </x-slot:title>
@@ -71,4 +71,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-layouts.guest-layout>

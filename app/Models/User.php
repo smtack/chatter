@@ -21,6 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'username',
         'email',
         'password',
@@ -49,6 +50,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getFullNameAttribute(): string
+    {
+        return trim("{$this->name} {$this->surname}");
     }
 
     public function posts(): HasMany
