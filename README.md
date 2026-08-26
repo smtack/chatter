@@ -1,7 +1,7 @@
 # Chatter
 
 <p align="center">
-    <img src="public/images/screenshot.png" alt="Chatter Screenshot" width="800">
+    <img src="public/images/Screenshot.png" alt="Chatter Screenshot" width="800">
 </p>
 
 ## About
@@ -22,7 +22,7 @@ Chatter is a social networking application originally based on Laravel Bootcamp'
 2. Run `composer run setup`
 3. Run `composer run dev` to start the development server
 
-To enable avatars, copy `default.png` from `public/images/` to `storage/app/public/avatars`, then run `php artisan storage:link`
+To enable avatars and post images, create `avatars` and `images` folders in `storage/app/public`, copy `default.png` from `public/images/` to `avatars` folder, then run `php artisan storage:link`
 
 ## License
 

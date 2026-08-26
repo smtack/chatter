@@ -11,6 +11,7 @@ class Post extends Model
 {
     protected $fillable = [
         'message',
+        'image',
         'profile_id',
     ];
 

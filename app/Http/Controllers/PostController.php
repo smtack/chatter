@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -35,13 +36,22 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'message' => 'required|string|min:3|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ], [
             'message.required' => 'Please write something to post!',
             'message.max' => 'Posts must be 255 characters or less.',
+            'image.image' => 'The uploaded file must be an image.',
+            'image.mimes' => 'The uploaded image must be a jpeg, png, jpg, gif or webp.',
+            'image.max' => 'The uploaded image must not exceed 2MB.',
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+        }
 
         Auth::user()->posts()->create([
             'message' => $validated['message'],
+            'image' => $path ?? null,
             'profile_id' => $profile->id,
         ]);
 
@@ -88,12 +98,28 @@ class PostController extends Controller
 
         $validated = $request->validate([
             'message' => 'required|string|min:3|max:255',
+            'image'=> 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ], [
             'message.required' => 'Please write something to post!',
             'message.max' => 'Posts must be 255 characters or less.',
+            'image.image' => 'The uploaded file must be an image.',
+            'image.mimes' => 'The uploaded image must be a jpeg, png, jpg, gif or webp.',
+            'image.max' => 'The uploaded image must not exceed 2MB.',
         ]);
 
-        $post->update($validated);
+        if ($request->hasFile('image')) {
+            $oldPath = $post->image;
+
+            if ($oldPath) {
+                Storage::disk('public')->delete($oldPath);
+            }
+
+            $path = $request->file('image')->store('images', 'public');
+
+            $post->update(['image' => $path]);
+        }
+
+        $post->update(['message' => $validated['message']]);
 
         return redirect()
             ->to(session()->pull('url.intended', route('home')))
@@ -107,8 +133,26 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
 
+        if ($post->image) {
+            Storage::disk('public')->delete($post->image);
+        }
+
         $post->delete();
 
-        return redirect()->back()->with('success', 'Your Post has been deleted!');
+        return redirect()->to(route('home'))->with('success', 'Your Post has been deleted');
+    }
+
+    /**
+     * Remove an image from a post.
+     */
+    public function destroyImage(Post $post)
+    {
+        $this->authorize('update', $post);
+
+        Storage::disk('public')->delete($post->image);
+
+        $post->update(['image' => null]);
+
+        return redirect()->back()->with('success', 'Image removed');
     }
 }

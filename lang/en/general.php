@@ -60,4 +60,8 @@ return [
     'users_profile' => "Profile",
     'explore' => 'Explore',
     'likes' => 'Likes',
+    'post_image' => 'Post Image',
+    'delete_image' => 'Delete Image',
+    'delete_post' => 'Delete Post',
+    'delete_post_warning' => 'Are you sure you want to delete this post? This action cannot be undone.',
 ];

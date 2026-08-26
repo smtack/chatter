@@ -60,4 +60,8 @@ return [
     'users_profile' => '\'s Profil',
     'explore' => 'Explorer',
     'likes' => 'Goûts',
+    'post_image' => 'Image du post',
+    'delete_image' => 'Supprimer l\'image',
+    'delete_post' => 'Supprimer le post',
+    'delete_post_warning' => 'Êtes-vous sûr de vouloir supprimer ce post? Cette action est irréversible.',
 ];

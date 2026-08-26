@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
+    Route::delete('/posts/{post}/image', [PostController::class, 'destroyImage'])->name('posts.destroy-image');
 
     // Reply Routes
     Route::post('/replies/{post}', [ReplyController::class, 'store']);

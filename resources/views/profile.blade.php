@@ -9,7 +9,7 @@
         @auth
             <div class="card bg-base-100 shadow mt-8">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('posts.store', $user) }}">
+                    <form enctype="multipart/form-data" method="POST" action="{{ route('posts.store', $user) }}">
                         @csrf
 
                         <div class="form-control w-full">
@@ -29,11 +29,21 @@
                             @enderror
                         </div>
 
-                        <div class="mt-4 flex items-center justify-end">
+                        <div class="mt-4 flex items-center justify-between">
+                            <input type="file" name="image" accept="image/*" class="file-input file-input-bordered file-input-sm w-full max-w-xs mr-4 @error('image') file-input-error @enderror">
+
+                            
+                            
                             <button type="submit" class="btn btn-primary btn-sm">
                                 {{ __('general.post') }}
                             </button>
                         </div>
+
+                        @error('image')
+                            <div class="label">
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            </div>
+                        @enderror
                     </form>
                 </div>
             </div>
