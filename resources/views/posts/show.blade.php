@@ -80,14 +80,6 @@
                                             <a href="/replies/{{ $reply->id }}/edit" class="btn btn-ghost btn-xs">
                                                 {{ __('general.edit') }}
                                             </a>
-                                            <form method="POST" action="/replies/{{ $reply->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="btn btn-ghost btn-xs text-error">
-                                                    {{ __('general.delete') }}
-                                                </button>
-                                            </form>
                                         </div>
                                     @endcan
                                 </div>

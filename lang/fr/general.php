@@ -64,4 +64,6 @@ return [
     'delete_image' => 'Supprimer l\'image',
     'delete_post' => 'Supprimer le post',
     'delete_post_warning' => 'Êtes-vous sûr de vouloir supprimer ce post? Cette action est irréversible.',
+    'delete_reply' => 'Supprimer la réponse',
+    'delete_reply_warning' => 'Êtes-vous sûr de vouloir supprimer cette réponse? Cette action est irréversible.',
 ];

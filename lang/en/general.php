@@ -64,4 +64,6 @@ return [
     'delete_image' => 'Delete Image',
     'delete_post' => 'Delete Post',
     'delete_post_warning' => 'Are you sure you want to delete this post? This action cannot be undone.',
+    'delete_reply' => 'Delete Reply',
+    'delete_reply_warning' => 'Are you sure you want to delete this reply? This action cannot be undone.',
 ];

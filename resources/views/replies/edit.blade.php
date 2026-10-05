@@ -39,5 +39,23 @@
                 </form>
             </div>
         </div>
+
+        <div class="max-w-2xl mx-auto mt-4">
+            <div class="card bg-base-100">
+                <div class="card-body">
+                    <h2 class="text-lg font-semibold">{{ __('general.delete_reply') }}</h2>
+                    <p class="text-sm text-base-content/60 mt-1">{{ __('general.delete_reply_warning') }}</p>
+
+                   <form method="POST" action="/replies/{{ $reply->id }}" class="flex justify-end mt-4">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="btn btn-error btn-sm text-white">
+                            {{ __('general.delete') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </x-layouts.layout>
