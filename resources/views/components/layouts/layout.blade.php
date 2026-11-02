@@ -3,7 +3,7 @@
 
 <x-head />
 
-<body class="min-h-screen flex flex-col bg-base-200 font-sans">
+<body class="min-h-screen flex flex-col bg-base-200 font-sans overflow-x-hidden">
     <x-nav />
 
     <!-- Success Toast -->

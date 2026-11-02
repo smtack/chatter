@@ -1,8 +1,6 @@
 # Chatter
 
-<p align="center">
-    <img src="public/images/Screenshot.png" alt="Chatter Screenshot">
-</p>
+<img src="public/images/Screenshot.png">
 
 ## About
 

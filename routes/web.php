@@ -11,7 +11,7 @@ use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/register');
+Route::redirect('/', '/home');
 
 Route::get('lang/{lang}', LocaleController::class)->name('lang');
 

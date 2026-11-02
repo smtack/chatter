@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('profile_id')->constrained('users')->cascadeOnDelete();
             $table->string('message', 255);
+            $table->string('image', 255)->nullable();
             $table->timestamps();
             $table->index('user_id');
         });
