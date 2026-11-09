@@ -66,4 +66,5 @@ return [
     'delete_post_warning' => 'Are you sure you want to delete this post? This action cannot be undone.',
     'delete_reply' => 'Delete Reply',
     'delete_reply_warning' => 'Are you sure you want to delete this reply? This action cannot be undone.',
+    'tell_people_about_yourself' => 'Tell people about yourself...',
 ];

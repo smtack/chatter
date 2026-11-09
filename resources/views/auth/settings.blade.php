@@ -131,19 +131,31 @@
                         @csrf
 
                         <!-- Bio -->
-                        <label class="floating-label mb-6">
-                            <textarea
-                                name="bio"
-                                placeholder="Tell people about yourself..."
-                                class="input input-bordered h-40 resize-none text-wrap @error('bio') input-error @enderror"
-                                required>{{ auth()->user()->bio }}</textarea>
-                            <span>{{ __('general.bio') }}</span>
-                        </label>
-                        @error('bio')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                        <div x-data="{ bio: @js(old('bio', auth()->user()->bio)) }">
+                            <label class="floating-label mb-6">
+                                <textarea
+                                    name="bio"
+                                    x-model="bio"
+                                    maxlength="255"
+                                    placeholder="{{ __('general.tell_people_about_yourself') }}"
+                                    class="input input-bordered h-40 resize-none text-wrap @error('bio') input-error @enderror"
+                                    required></textarea>
+                                <span>{{ __('general.bio') }}</span>
+                            </label>
+
+                            @error('bio')
+                                <div class="label -mt-4 mb-2">
+                                    <span class="label-text-alt text-error">{{ $message }}</span>
+                                </div>
+                            @enderror
+
+                            <div class="text-right text-sm mt-1">
+                                <span
+                                    x-text="bio.length + ' / 255'"
+                                    :class="bio.length >= 255 ? 'text-red-500' : 'text-gray-500'"
+                                ></span>
                             </div>
-                        @enderror
+                        </div>
 
                         <!-- Submit Button -->
                         <div class="form-control mt-8">

@@ -21,7 +21,7 @@
                 </h3>
                 <h4 class="text-sm text-base-content/60">{{ __('general.joined') }} {{ $user->created_at->diffForHumans() }}</h4>
 
-                <p class="mt-2 text-gray-800">{{ $user->bio }}</p>
+                <p class="mt-2 text-gray-800 wrap-anywhere">{{ $user->bio }}</p>
             </div>
             <div>
                 @auth

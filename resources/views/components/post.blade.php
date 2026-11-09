@@ -60,7 +60,7 @@
 
         {{-- Post Content --}}
         <div class="mt-2">
-            <p class="mt-2">{{ $post->message }}</p>
+            <p class="mt-2 wrap-anywhere">{{ $post->message }}</p>
 
             @if ($post->image)
                 <div class="mt-4">

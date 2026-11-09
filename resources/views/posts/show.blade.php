@@ -15,13 +15,13 @@
                 <form method="POST" action="/replies/{{ $post->id }}">
                     @csrf
 
-                    <div class="form-control w-full">
+                    <div x-data="{ message: '' }" class="form-control w-full">
                         <textarea
                             name="message"
+                            x-model="message"
+                            maxlength="255"
                             placeholder="{{ __('general.what_do_you_think') }}"
                             class="textarea textarea-bordered w-full resize-none @error('message') textarea-error @enderror"
-                            rows="4"
-                            maxlength="255"
                             required
                         >{{ old('message') }}</textarea>
 
@@ -30,6 +30,13 @@
                                 <span class="label-text-alt text-error">{{ $message }}</span>
                             </div>
                         @enderror
+
+                        <div class="text-right text-sm mt-1">
+                            <span
+                                x-text="message.length + ' / 255'"
+                                :class="message.length >= 255 ? 'text-red-500' : 'text-gray-500'"
+                            ></span>
+                        </div>
                     </div>
 
                     <div class="mt-4 flex items-center justify-end">
@@ -83,7 +90,7 @@
                                         </div>
                                     @endcan
                                 </div>
-                                <p class="mt-1">{{ $reply->message }}</p>
+                                <p class="mt-1 wrap-anywhere">{{ $reply->message }}</p>
                             </div>
                         </div>
                     </div>

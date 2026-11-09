@@ -12,20 +12,27 @@
                     @csrf
                     @method('PUT')
 
-                    <div class="form-control w-full">
+                    <div x-data="{ message: @js(old('message', $reply->message)) }" class="form-control w-full">
                         <textarea
                             name="message"
-                            class="textarea textarea-bordered w-full resize-none @error('message') textarea-error @enderror"
-                            rows="4"
+                            x-model="message"
                             maxlength="255"
+                            class="textarea textarea-bordered w-full resize-none @error('message') textarea-error @enderror"
                             required
-                        >{{ old('message', $reply->message) }}</textarea>
+                        ></textarea>
 
                         @error('message')
                             <div class="label">
                                 <span class="label-text-alt text-error">{{ $message }}</span>
                             </div>
                         @enderror
+
+                        <div class="text-right text-sm mt-1">
+                            <span
+                                x-text="message.length + ' / 255'"
+                                :class="message.length >= 255 ? 'text-red-500' : 'text-gray-500'"
+                            ></span>
+                        </div>
                     </div>
 
                     <div class="card-actions justify-between mt-4">
