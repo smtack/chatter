@@ -1,4 +1,4 @@
-<x-layouts.guest-layout>
+<x-layout>
     <x-slot:title>
         {{ __('general.register') }}
     </x-slot:title>
@@ -118,4 +118,4 @@
             </div>
         </div>
     </div>
-</x-layouts.guest-layout>
+</x-layout>

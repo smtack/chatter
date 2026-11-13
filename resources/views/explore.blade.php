@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layout>
     <x-slot:title>
         {{ __('general.explore') }}
     </x-slot:title>
@@ -23,4 +23,4 @@
             {{ $posts->links() }}
         </div>
     </div>
-</x-layouts.layout>
+</x-layout>

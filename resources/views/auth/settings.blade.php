@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layout>
     <x-slot:title>
         {{ __('general.update_profile') }}
     </x-slot:title>
@@ -263,4 +263,4 @@
             </div>
         </div>
     </div>
-</x-layouts.layout>
+</x-layout>

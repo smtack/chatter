@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layout>
     <x-slot:title>
         {{ __('general.edit_post') }}
     </x-slot:title>
@@ -89,4 +89,4 @@
             </div>
         </div>
     </div>
-</x-layouts.layout>
+</x-layout>

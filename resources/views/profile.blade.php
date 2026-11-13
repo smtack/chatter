@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layout>
     <x-slot:title>
         {{ $user->name }}'s {{ __('general.users_profile') }}
     </x-slot:title>
@@ -73,4 +73,4 @@
             {{ $posts->links() }}
         </div>
     </div>
-</x-layouts.layout>
+</x-layout>

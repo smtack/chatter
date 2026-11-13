@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layout>
     <x-slot:title>
         {{ __('general.post_by') }} {{ $post->user->name }}
     </x-slot:title>
@@ -111,4 +111,4 @@
             {{ $replies->links() }}
         </div>
     </div>
-</x-layouts.layout>
+</x-layout>

@@ -88,11 +88,13 @@
                     <span>{{ $post->likes_count }}</span>
                 </button>
             </form>
+            <form action="/posts/{{ $post->id }}" method="GET">
+                <button type="submit" class="flex items-center space-x-2 cursor-pointer">
+                    <x-icons.reply-icon />
 
-            <a href="/posts/{{ $post->id }}" class="flex space-x-2">
-                <x-icons.reply-icon />
-                <span class="text-black">{{ $post->replies_count }}</span>
-            </a>
+                    <span>{{ $post->replies_count }}</span>
+                </button>
+            </form>
         </div>
     </div>
 </div>

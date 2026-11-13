@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layout>
     <x-slot:title>
         {{ __('general.home_feed') }}
     </x-slot:title>
@@ -24,4 +24,4 @@
             {{ $posts->links() }}
         </div>
     </div>
-</x-layouts.layout>
+</x-layout>

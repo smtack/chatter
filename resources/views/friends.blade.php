@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layout>
     <x-slot:title>
         {{ __('general.friends') }}
     </x-slot:title>
@@ -39,4 +39,4 @@
             @endforelse
         </div>
     </div>
-</x-layouts.layout>
+</x-layout>

@@ -3,8 +3,8 @@
     https://laravel.com/learn/getting-started-with-laravel
 **/
 
-:root:has(input.theme-controller[value=laravelCustom]:checked),
-[data-theme="laravelCustom"] {
+:root:has(input.theme-controller[value=themeLight]:checked),
+[data-theme="themeLight"] {
   color-scheme: light;
 
   /* Canvas + text (neutral / cooler beige balance) */
@@ -13,6 +13,9 @@
   --color-base-200: #ededee;  /* light neutral gray (still contrasty w/ border) */
   --color-base-300: #e0e1e3;  /* mid gray, cooler but not blue */
   --color-base-content: #1a1a1c; /* neutral dark, softer than #111113 */
+
+  /* Colors */
+  --input-background: #ffffff;
 
   /* Text tones */
   --text-12: var(--color-base-content);
@@ -45,8 +48,8 @@
 }
 
 /* Page background & base text */
-html[data-theme="laravelCustom"],
-:root:has(input.theme-controller[value=laravelCustom]:checked) body {
+html[data-theme="themeLight"],
+:root:has(input.theme-controller[value=themeLight]:checked) body {
     color: var(--text-12);
 }
 
@@ -85,7 +88,7 @@ html[data-theme="laravelCustom"],
 :where(.input, .textarea) {
     border-radius: var(--radius-field);
     border: var(--border) solid var(--border-color-soft);
-    background: #fff;
+    background: var(--input-background);
 }
 
 /* reduce default textarea padding a touch */
@@ -236,8 +239,8 @@ a.btn-ghost:hover {
 }
 
 /* 3) Slightly rounder cards & fields*/
-:root:has(input.theme-controller[value=laravelCustom]:checked),
-[data-theme="laravelCustom"] {
+:root:has(input.theme-controller[value=themeLight]:checked),
+[data-theme="themeLight"] {
     --radius-box: 10px;
     /* was 8px */
     --radius-field: 8px;
